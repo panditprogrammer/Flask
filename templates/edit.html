@@ -1,0 +1,22 @@
+<!-- use template inheritance in Flask  -->
+{% extends 'base.html' %}
+{% block title %}
+Edit Todo in FlaskTodo | update in FlaskTodo sqlite database
+{% endblock title %}
+{% block body %}
+
+<div class="container ">
+    <h1 class="text-center py-4">Update Todo </h1>
+
+    <form action="/edit/{{todoData.s_number}}" method="POST" style="width: 400px; margin: 1rem auto;">
+        <label for="title" class="form-label">Todo Title</label>
+        <input type="text" name="title" value="{{todoData.title}}" class="form-control" id="title" placeholder="Your Todo">
+
+        <label for="desc" class="form-label">Todo Description </label>
+        <textarea class="form-control" name="desc" id="desc" rows="3">{{todoData.desc}}</textarea>
+        <button type="submit" class="btn btn-success my-2">Update Todo</button>
+    </form>
+
+</div>
+
+{% endblock body %}
