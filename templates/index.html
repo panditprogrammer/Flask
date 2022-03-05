@@ -1,0 +1,60 @@
+<!-- use template inheritance in Flask  -->
+{% extends 'base.html' %}
+{% block title %}
+python FlaskTodo website by pandit programmer with sqlite database !
+{% endblock title %}
+{% block body %}
+    
+<div class="container ">
+  <h1 class="text-center py-4">Python Flask Todo Web Application </h1>
+
+  <form action="/" method="POST">
+    <label for="title" class="form-label">Todo Title</label>
+    <input type="text" name="title" class="form-control" id="title" placeholder="Your Todo">
+    
+    <label for="desc" class="form-label">Todo Description </label>
+    <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+    <button type="submit" class="btn btn-success my-2">Add Todo</button>
+  </form>
+  
+    <h2 class="bg-dark text-white p-2 mt-4">Your All Todos </h2>
+    <div class="table-responsive">
+      {% if allData|length ==0 %}
+      <div class="alert alert-danger text-center" >No Todo To Show </div>
+      {% else %}
+
+      <table class="table table-striped">
+        <thead class="bg-success text-white">
+          <tr class="text-center">
+            <th scope="col">S No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date & Time</th>
+            <th scope="col" colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for todo in allData %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.desc}}</td>
+            <td>{{todo.create_date}}</td>
+            <td>
+              <a href="/delete/{{todo.s_number}}" class="btn btn-success">Delete</a>
+            </td>
+            <td>
+              <a href="/edit/{{todo.s_number}}" class="btn btn-warning">Edit</a>
+            </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+    
+  </div>
+
+  {% endblock body %}
+  
