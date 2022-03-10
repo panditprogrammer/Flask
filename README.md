@@ -6,7 +6,6 @@ env MyenvName
 
  ```
 
-
 ## 2 select env or activate env
 ```
 MyenvName\Scripts\activate.bat  
@@ -18,8 +17,10 @@ pip install flask
 pip install Flask-SQLAlchemy
 ```
 
-## 4 Create and configure flask app with sqlite database
+## 4 Create New File 'app.py' and configure flask app with sqlite database
 ```
+from flask import Flask
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///myDatabase.db'    
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -27,11 +28,11 @@ mydb = SQLAlchemy(app)
 
 ```
  
- ## 5 Create route 
+ ## 5 Create First route 
  ```
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return "Hello World"
 
 if __name__ == "__main__":
     app.run(debug=True)
@@ -70,6 +71,7 @@ Mydatabase.create_all()
 
 
 # Flask Starter Template 
+
 ## create your first app in flask
 Click here for documentation https://flask.palletsprojects.com/en/2.0.x/quickstart/
 
